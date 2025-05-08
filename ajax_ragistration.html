@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="ajax_style.css">
+<title>Registration</title>
+</head>
+<body>
+<div class="container">
+<h2>Registration Form</h2>
+<form action="#">
+<div class="form-group">
+<label for="name">Name:</label>
+<input type="text" class="form-control" id="name"
+placeholder="Enter name" name="name">
+</div>
+<div class="form-group">
+<label for="email">Email:</label>
+<input required type="email" class="form-control" id="email"
+placeholder="Enter email" name="email">
+</div>
+<div class="form-group">
+<label for="password">Password:</label>
+<input type="password" class="form-control" id="password"
+placeholder="Enter password" name="password">
+</div>
+<div class="text-center">
+<button type="button" onclick="saveData()" id="save_btn" class="btn 
+btn-primary">Submit</button>
+<button type="reset" class="btn btn-warning" id="">Reset</button>
+</div>
+</form>
+</div>
+</body>
+<script>
+function saveData()
+{
+let name,email,password;
+name=document.getElementById("name").value;
+email=document.getElementById("email").value;
+password=document.getElementById("password").value;
+//console.log(name+email+password);
+//localStorage.setItem("name",name)
+//localStorage.setItem("email",email)
+//localStorage.setItem("password",password)
+let user_records=new Array();
+user_records=JSON.parse(localStorage.getItem("users"))?JSON.parse(localStorage.getItem("users")):[]
+if(user_records.some((v)=>
+{
+return v.email==email
+}))
+{
+alert("duplicate Data");
+}
+else
+{
+user_records.push(
+{
+"name":name,
+"email":email,
+"password":password
+})
+localStorage.setItem("users",JSON.stringify(user_records));
+}
+}
+</script>
+</html>

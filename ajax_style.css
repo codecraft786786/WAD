@@ -1,0 +1,14 @@
+.container {
+    width :100x;
+    height:100x;
+    background-color:antiquewhite;
+    }
+    .container.card {
+    width :50%;
+    height:50%;
+    background-color: white;
+    text-align: center;
+    margin:auto;
+    padding :10x;
+    margin-top:10px;
+    margin-bottom:10x;}

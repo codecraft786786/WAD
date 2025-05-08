@@ -1,0 +1,18 @@
+import { Component } from '@angular/core'; 
+@Component({ 
+selector: 'app-registration', 
+templateUrl: './registration.component.html', 
+styleUrls: ['./registration.component.css'] }) 
+export class RegistrationComponent { 
+userArray: any[] = []; 
+data = {    name: '', email: '',    mobile: '',    password: ''  }; 
+doRegistration() { 
+this.userArray = JSON.parse(localStorage.getItem("users") || '[]'); 
+const userExists = this.userArray.some(user => user.email === this.data.email); 
+if (userExists) { 
+alert("User already registered with this email."); 
+return; } 
+this.userArray.push({ ...this.data }); 
+localStorage.setItem("users", JSON.stringify(this.userArray)); 
+alert("Registration Successful"); 
+this.data = { name:", email:"mobile:", passwors:"}}};
